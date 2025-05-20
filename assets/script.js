@@ -31,9 +31,9 @@ function itemClick(event) {
 
     // variável que armazena o id da casa clicada
     let item = event.target.getAttribute('data-item')
-    
-    
-    if ( playing && square[item] === '') {
+
+
+    if (playing && square[item] === '') {
         //verifica se a casa não está vazia e se o jogo está em andamento
         square[item] = player;
         renderSquare();//atualiza o estado do jogo
@@ -57,13 +57,13 @@ function reset() {
     // Define o jogador atual
     player = (random === 0) ? 'X' : 'O';
 
-    
+
 
     // Reseta as casas do jogo
     for (let i in square) {
         square[i] = ''
     }
-    
+
     // Atualiza o estado do jogo
     renderSquare()
     // Atualiza a informação do jogo
@@ -83,7 +83,7 @@ function renderSquare() {
     for (let i in square) {
         // Recupera o elemento que representa a casa atual
         let item = document.querySelector(`div[data-item=${i}]`);
-        
+
         // Atualiza a interface da casa com o valor atual da casa
         item.innerHTML = square[i];
     }
@@ -96,17 +96,19 @@ function renderSquare() {
 function renderInfo() {
     // O elemento da classe 'vez' recebe o jogador atual
     document.querySelector('div.vez').innerHTML = player;
-    
+
+
+
     // O elemento da classe 'resultado' recebe a mensagem de aviso
     document.querySelector('div.resultado').innerHTML = warning;
 }
 
 //Função responsável por alterar a vez do jogador
-function togglePlayer() { 
+function togglePlayer() {
     player = player === 'X' ? 'O' : 'X';
 
     if (!playing) {
-        player = '--'
+        player = 'Jogo Encerrado'
     }
     // Atualiza a informação do jogo
     renderInfo();
@@ -118,20 +120,20 @@ function checkGame() {
     if (checkWinnerFor('X')) {
         warning = 'O vencedor é "X"';
         playing = false;
-        
+
     } else if (checkWinnerFor('O')) {
         warning = 'O vencedor é "O"';
         playing = false
-       
+
     } else if (checkDraw()) {
         warning = 'Deu velha ';
         playing = false;
-        
+
     }
 
     // Atualiza a informação do jogo
     renderInfo();
-    
+
 }
 
 //Função responsável por verificar quem ganhou
@@ -155,14 +157,14 @@ function checkWinnerFor(player) {
     for (let i in possibilities) {
 
         let pArray = possibilities[i].split(',');//separa as possibilidades de vitoria em um array
-        
+
         let hasWin = pArray.every(option => square[option] == player);//verifica se todas as casas da possibilidade de vitoria estao ocupadas pelo jogador
-        
+
         //se todas as casas estiverem ocupadas pelo jogador, retorna true (informa que tem um vencedor)
         if (hasWin) {
             return true
         }
-        
+
     }
     //se nenhuma das possibilidades de vitoria for verdadeira, retorna false (Jogo continua pois não houve vencedor ainda)
     return false
@@ -170,7 +172,7 @@ function checkWinnerFor(player) {
 
 
 //Função para verificar se "deu velha"
-function checkDraw() { 
+function checkDraw() {
     //Verifica se todas as casas estao ocupadas
     for (let i in square) {
 

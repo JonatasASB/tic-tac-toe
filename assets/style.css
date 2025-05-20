@@ -25,6 +25,7 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     margin-top: 30px;
 }
+
 .area .item {
     width: 100px;
     height: 100px;
@@ -36,6 +37,7 @@ h1 {
     color: #FFF;
     cursor: pointer;
 }
+
 .item:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -43,12 +45,15 @@ h1 {
 .item.t {
     border-top: 1px solid #FFF;
 }
+
 .item.l {
     border-left: 1px solid #FFF;
 }
+
 .item.r {
     border-right: 1px solid #FFF;
 }
+
 .item.b {
     border-bottom: 1px solid #FFF;
 }
@@ -60,18 +65,39 @@ h1 {
     border: 1px solid #ddd;
     padding: 10px;
 }
+
 .infoitem {
     flex: 1;
 }
+
 .infotitulo {
     text-align: center;
     color: #FFF;
     margin-bottom: 10px;
 }
+
 .infocorpo {
     text-align: center;
     color: #FFF;
     font-size: 20px;
+}
+
+.vez,
+.resultado {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.vez {
+    color: rgb(247, 47, 47)
+}
+
+.resultado {
+    color: rgb(104, 247, 47)
+}
+
+.infoLeft {
+    border-right: 1px solid #ddd;
 }
 
 .reset {
